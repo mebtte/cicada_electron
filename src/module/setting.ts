@@ -47,7 +47,7 @@ function updateAndSave() {
 }
 
 app.on('will-quit', updateAndSave);
-eventemitter.on(EventType.PLAYER_SETTING_CHANGE, (playerSettingPart) => {
+eventemitter.on(EventType.UPDATE_PLAYER_SETTING, (playerSettingPart) => {
   setting = {
     ...setting,
     player: deepmerge(setting.player, playerSettingPart),

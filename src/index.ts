@@ -17,7 +17,7 @@ app
   .whenReady()
   .then(() => {
     player.init();
-    menu.init();
+    menu.update();
     tray.init();
     if (process.env.NODE_ENV !== 'development') {
       updater.checkUpdate(true);

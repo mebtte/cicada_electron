@@ -42,7 +42,7 @@ function init() {
         return;
       }
       const { width, height } = window.getBounds();
-      eventemitter.emit(EventType.PLAYER_SETTING_CHANGE, { width, height });
+      eventemitter.emit(EventType.UPDATE_PLAYER_SETTING, { width, height });
     }, 2000)
   );
 
@@ -56,10 +56,10 @@ function init() {
     });
   }
   window.webContents.on('devtools-opened', () =>
-    eventemitter.emit(EventType.PLAYER_SETTING_CHANGE, { devtools: true })
+    eventemitter.emit(EventType.UPDATE_PLAYER_SETTING, { devtools: true })
   );
   window.webContents.on('devtools-closed', () =>
-    eventemitter.emit(EventType.PLAYER_SETTING_CHANGE, { devtools: false })
+    eventemitter.emit(EventType.UPDATE_PLAYER_SETTING, { devtools: false })
   );
 }
 
