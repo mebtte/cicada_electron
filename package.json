@@ -1,0 +1,52 @@
+{
+  "name": "cicada_desktop",
+  "version": "4.6.7",
+  "author": {
+    "name": "mebtte",
+    "email": "hi@mebtte.com",
+    "url": "https://mebtte.com"
+  },
+  "private": true,
+  "main": "build/src/index.js",
+  "scripts": {
+    "ts:watch": "tsc -w",
+    "ts:build": "tsc",
+    "dev": "cross-env NODE_ENV=development electron ./build/src/index.js",
+    "build:mac": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --mac",
+    "build:windows": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --windows",
+    "build": "npm run ts:build && npm run build:mac && npm run build:windows"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.159",
+    "@types/node": "^12.12.41",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "cross-env": "^7.0.2",
+    "electron": "^11.0.0",
+    "electron-builder": "^22.8.0",
+    "eslint": "^7.0.0",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "deepmerge": "^4.2.2",
+    "eventemitter3": "^4.0.4",
+    "lodash": "^4.17.20"
+  },
+  "build": {
+    "appId": "com.mebtte.cicada",
+    "productName": "知了",
+    "artifactName": "cicada_${os}_${version}.${ext}",
+    "mac": {
+      "icon": "./static/icon_mac.icns"
+    },
+    "win": {
+      "icon": "./static/icon_windows.ico"
+    },
+    "files": [
+      "build/**/*",
+      "static/**/*"
+    ]
+  }
+}
