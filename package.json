@@ -7,31 +7,38 @@
     "url": "https://mebtte.com"
   },
   "private": true,
-  "main": "build/src/index.js",
+  "main": "build/index.js",
   "scripts": {
-    "ts:watch": "tsc -w",
-    "ts:build": "tsc",
-    "dev": "cross-env NODE_ENV=development electron ./build/src/index.js",
-    "build:mac": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --mac",
-    "build:windows": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --windows",
-    "build": "npm run ts:build && npm run build:mac && npm run build:windows"
+    "webpack:watch": "webpack --watch --progress --config webpack/development.js",
+    "webpack:build": "webpack --progress --config webpack/development.js",
+    "electron:start": "cross-env NODE_ENV=development electron ./build/index.js",
+    "electron:build:mac": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --mac",
+    "electron:build:windows": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --windows",
+    "electron:build": "npm run ts:build && npm run build:mac && npm run build:windows"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-syntax-top-level-await": "^7.12.1",
     "@types/lodash": "^4.14.159",
     "@types/node": "^12.12.41",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
+    "babel-loader": "^8.2.2",
     "cross-env": "^7.0.2",
     "electron": "^11.0.0",
     "electron-builder": "^22.8.0",
     "eslint": "^7.0.0",
     "prettier": "^2.0.5",
-    "typescript": "^3.8.3"
+    "ts-loader": "^8.0.14",
+    "typescript": "^3.8.3",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "deepmerge": "^4.2.2",
+    "electron-store": "^7.0.1",
     "eventemitter3": "^4.0.4",
     "lodash": "^4.17.20"
   },

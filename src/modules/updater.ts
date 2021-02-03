@@ -2,9 +2,10 @@ import { dialog, shell } from 'electron';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-import * as pkg from '../../package.json';
 import config from '../config';
 import eventemitter, { Type } from './eventemitter';
+
+const { VERSION } = process.env;
 
 /**
  * 检查更新
@@ -23,7 +24,7 @@ async function checkUpdate(silence = false) {
     }
     const $ = cheerio.load(html);
     const latestVersion = $('.commit h4 a').first().text().trim();
-    if (pkg.version !== latestVersion) {
+    if (VERSION !== latestVersion) {
       dialog
         .showMessageBox({
           type: 'info',
@@ -38,7 +39,7 @@ async function checkUpdate(silence = false) {
     } else if (!silence) {
       dialog.showMessageBox({
         type: 'info',
-        message: `当前已是最新版本: ${pkg.version}`,
+        message: `当前已是最新版本: ${VERSION}`,
       });
     }
   } catch (error) {
