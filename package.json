@@ -1,6 +1,6 @@
 {
   "name": "cicada_desktop",
-  "version": "5.0.0",
+  "version": "5.7.9",
   "author": {
     "name": "mebtte",
     "email": "hi@mebtte.com",
@@ -12,9 +12,9 @@
     "webpack:watch": "webpack --watch --progress --config webpack/development.js",
     "webpack:build": "webpack --progress --config webpack/development.js",
     "electron:start": "cross-env NODE_ENV=development electron ./build/index.js",
-    "electron:build:mac": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --mac",
+    "electron:build:macos": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --mac",
     "electron:build:windows": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --windows",
-    "electron:build": "npm run ts:build && npm run build:mac && npm run build:windows"
+    "electron:build": "npm run webpack:build && npm run build:macos && npm run build:windows"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

@@ -2,14 +2,22 @@ import { Menu } from 'electron';
 
 import playerWindow from './player_window';
 import updater from '../platform/updater';
+import reset from '../utils/reset';
 
-export default Menu.buildFromTemplate([
+const menu = Menu.buildFromTemplate([
   {
     label: '知了',
     submenu: [
       {
         label: '关于',
         role: 'about',
+      },
+      {
+        type: 'separator',
+      },
+      {
+        label: '重置应用',
+        click: reset,
       },
       {
         type: 'separator',
@@ -61,3 +69,5 @@ export default Menu.buildFromTemplate([
     ],
   },
 ]);
+
+export default menu;

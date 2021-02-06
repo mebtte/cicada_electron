@@ -1,6 +1,6 @@
 import * as os from 'os';
 
-import { app, dialog, shell } from 'electron';
+import { app, dialog, shell, Menu } from 'electron';
 
 import config from './config';
 
@@ -22,7 +22,8 @@ try {
   const { default: playerWindow } = await import('./modules/player_window');
   await import('./modules/tray');
   if (platform === 'darwin') {
-    await import('./modules/macos_menu');
+    const { default: menu } = await import('./modules/macos_menu');
+    Menu.setApplicationMenu(menu);
   }
 
   app.on('activate', () => playerWindow.show());
@@ -38,15 +39,17 @@ try {
   const { response } = await dialog.showMessageBox({
     type: 'error',
     title: '启动发生错误',
-    message: `如尝试多次仍无法正常启动, 请下载最新版本. 错误信息: ${error.message}`,
-    buttons: ['重新启动', '下载最新版本', '取消'],
+    message: `如尝试多次仍无法正常启动, 请重置应用或者下载最新版本. 错误信息: ${error.message}`,
+    buttons: ['重新启动', '重置应用', '下载最新版本', '取消'],
   });
   if (response === 0) {
     app.relaunch();
   } else if (response === 1) {
+    const { default: reset } = await import('./utils/reset');
+    await reset();
+  } else if (response === 2) {
     await shell.openExternal(`${config.repository}/releases`);
-    app.exit();
-  } else {
-    app.exit();
+    app.quit();
   }
+  app.quit();
 }
