@@ -1,10 +1,11 @@
+import * as os from 'os';
+
 import { app, dialog, shell } from 'electron';
 
 import config from './config';
 
 // 单例模式
-const lock = app.requestSingleInstanceLock();
-if (!lock) {
+if (!app.requestSingleInstanceLock()) {
   app.quit();
 } else {
   app.on('second-instance', () =>
@@ -17,10 +18,22 @@ if (!lock) {
 try {
   await app.whenReady();
 
+  const platform = os.platform();
   const { default: playerWindow } = await import('./modules/player_window');
+  await import('./modules/tray');
+  if (platform === 'darwin') {
+    await import('./modules/macos_menu');
+  }
 
   app.on('activate', () => playerWindow.show());
   app.on('before-quit', () => playerWindow.removeAllListeners());
+  app.on('window-all-closed', () => app.quit());
+
+  // 检查更新
+  if (process.env.NODE_ENV === 'producation') {
+    const { default: updater } = await import('./platform/updater');
+    updater.checkUpdate();
+  }
 } catch (error) {
   const { response } = await dialog.showMessageBox({
     type: 'error',
@@ -32,15 +45,8 @@ try {
     app.relaunch();
   } else if (response === 1) {
     await shell.openExternal(`${config.repository}/releases`);
+    app.exit();
+  } else {
+    app.exit();
   }
-  app.exit(0);
-}
-
-app.on('window-all-closed', () => app.quit());
-
-// player.init();
-// menu.update();
-// tray.init();
-if (process.env.NODE_ENV !== 'development') {
-  // updater.checkUpdate(true);
 }

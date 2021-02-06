@@ -1,6 +1,6 @@
 import Store from 'electron-store';
 
-import config from './config';
+import config from '../config';
 
 export enum Key {
   SITE = 'site',

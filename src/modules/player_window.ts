@@ -1,7 +1,7 @@
 import { BrowserWindow } from 'electron';
 import debounce from 'lodash/debounce';
 
-import store, { Key } from '../store';
+import store, { Key } from '../platform/store';
 
 const playerWindow = new BrowserWindow({
   width: store.get(Key.PLAYER_WINDOW_WIDTH),
