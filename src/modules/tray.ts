@@ -5,6 +5,7 @@ import { app, Tray, Menu, shell } from 'electron';
 
 import config from '../config';
 import playerWindow from './player_window';
+import settingWindow from './settting_window';
 import updater from '../platform/updater';
 import reset from '../utils/reset';
 
@@ -21,6 +22,10 @@ if (os.platform() === 'darwin') {
       {
         label: '知了',
         click: () => playerWindow.show(),
+      },
+      {
+        label: '设置',
+        click: () => settingWindow.open(),
       },
       {
         label: '重置应用',

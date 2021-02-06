@@ -1,6 +1,7 @@
-import { Menu } from 'electron';
+import { app, Menu } from 'electron';
 
 import playerWindow from './player_window';
+import settingWindow from './settting_window';
 import updater from '../platform/updater';
 import reset from '../utils/reset';
 
@@ -16,6 +17,10 @@ const menu = Menu.buildFromTemplate([
         type: 'separator',
       },
       {
+        label: '设置',
+        click: () => settingWindow.open(),
+      },
+      {
         label: '重置应用',
         click: reset,
       },
@@ -28,6 +33,13 @@ const menu = Menu.buildFromTemplate([
       },
       {
         type: 'separator',
+      },
+      {
+        label: '重启应用',
+        click: () => {
+          app.relaunch();
+          return app.quit();
+        },
       },
       {
         label: '退出',

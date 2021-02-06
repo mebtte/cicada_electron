@@ -48,14 +48,12 @@ playerWindow.webContents.on('devtools-opened', () =>
 playerWindow.webContents.on('devtools-closed', () =>
   store.set(Key.PLAYER_DEVTOOLS_OPEN, false)
 );
-if (process.env.NODE_ENV === 'production') {
-  // 禁止跳转到其他域名
-  playerWindow.webContents.on('will-navigate', (event, url) => {
-    const { origin } = new URL(url);
-    if (origin !== store.get(Key.SITE)) {
-      event.preventDefault();
-    }
-  });
-}
+playerWindow.webContents.on('new-window', (event) => event.preventDefault());
+playerWindow.webContents.on('will-navigate', (event, url) => {
+  const { origin } = new URL(url);
+  if (origin !== store.get(Key.SITE)) {
+    event.preventDefault();
+  }
+});
 
 export default playerWindow;
