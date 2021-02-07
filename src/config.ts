@@ -1,4 +1,4 @@
 export default {
-  site: 'https://cicada.mebtte.com', // cicada_web 域名
+  ui_origin: 'https://cicada.mebtte.com', // ui 源
   repository: 'https://github.com/mebtte/cicada_desktop', // github 仓库
 };

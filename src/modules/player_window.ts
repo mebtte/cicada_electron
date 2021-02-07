@@ -20,7 +20,7 @@ const playerWindow = new BrowserWindow({
   },
 });
 
-playerWindow.loadURL(store.get(Key.SITE));
+playerWindow.loadURL(store.get(Key.UI_ORIGIN));
 if (store.get(Key.PLAYER_DEVTOOLS_OPEN)) {
   playerWindow.webContents.openDevTools();
 }
@@ -51,7 +51,7 @@ playerWindow.webContents.on('devtools-closed', () =>
 playerWindow.webContents.on('new-window', (event) => event.preventDefault());
 playerWindow.webContents.on('will-navigate', (event, url) => {
   const { origin } = new URL(url);
-  if (origin !== store.get(Key.SITE)) {
+  if (origin !== store.get(Key.UI_ORIGIN)) {
     event.preventDefault();
   }
 });

@@ -21,7 +21,7 @@ try {
   const platform = os.platform();
   const { default: playerWindow } = await import('./modules/player_window');
   await import('./modules/tray');
-  await import('./modules/ipc_main');
+  await import('./modules/ipc');
   if (platform === 'darwin') {
     const { default: menu } = await import('./modules/macos_menu');
     Menu.setApplicationMenu(menu);

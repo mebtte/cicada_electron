@@ -5,7 +5,7 @@ import { app, Tray, Menu, shell } from 'electron';
 
 import config from '../config';
 import playerWindow from './player_window';
-import settingWindow from './settting_window';
+import configWindow from './config_window';
 import updater from '../platform/updater';
 import reset from '../utils/reset';
 
@@ -24,8 +24,8 @@ if (os.platform() === 'darwin') {
         click: () => playerWindow.show(),
       },
       {
-        label: '设置',
-        click: () => settingWindow.open(),
+        label: '配置',
+        click: () => configWindow.open(),
       },
       {
         label: '重置应用',
@@ -44,7 +44,7 @@ if (os.platform() === 'darwin') {
           },
           {
             label: '访问网站',
-            click: () => shell.openExternal(config.site),
+            click: () => shell.openExternal(config.ui_origin),
           },
           {
             label: '开发者工具',
