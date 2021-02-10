@@ -10,7 +10,7 @@
   "main": "build/index.js",
   "scripts": {
     "webpack:watch": "webpack --watch --progress --config webpack/development.js",
-    "webpack:build": "webpack --progress --config webpack/development.js",
+    "webpack:build": "webpack --progress --config webpack/production.js",
     "electron:start": "cross-env NODE_ENV=development electron ./build/index.js",
     "electron:build:macos": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --mac",
     "electron:build:windows": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --windows",
