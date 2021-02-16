@@ -14,7 +14,8 @@
     "electron:start": "cross-env NODE_ENV=development electron ./build/index.js",
     "electron:build:macos": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --mac",
     "electron:build:windows": "cross-env ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/ electron-builder build --windows",
-    "electron:build": "npm run webpack:build && npm run build:macos && npm run build:windows"
+    "electron:build": "npm run electron:build:macos && npm run electron:build:windows",
+    "build": "npm run webpack:build && npm run electron:build"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -35,7 +36,7 @@
     "webpack-cli": "^4.4.0"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.3",
     "deepmerge": "^4.2.2",
     "electron-store": "^7.0.1",
