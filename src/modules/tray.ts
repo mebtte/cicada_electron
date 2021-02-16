@@ -1,7 +1,7 @@
 import * as os from 'os';
 import * as path from 'path';
 
-import { app, Tray, Menu, shell } from 'electron';
+import { app, dialog, Tray, Menu, shell } from 'electron';
 
 import config from '../config';
 import playerWindow from './player_window';
@@ -51,6 +51,23 @@ if (os.platform() === 'darwin') {
             click: () => playerWindow.webContents.openDevTools(),
           },
         ],
+      },
+      {
+        label: '重启应用',
+        click: () =>
+          dialog
+            .showMessageBox({
+              type: 'question',
+              message: '确定重启应用吗?',
+              buttons: ['确认', '取消'],
+            })
+            .then(({ response }) => {
+              if (response === 1) {
+                return;
+              }
+              app.relaunch();
+              return app.quit();
+            }),
       },
       {
         label: '退出',

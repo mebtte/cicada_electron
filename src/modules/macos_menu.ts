@@ -1,4 +1,4 @@
-import { app, Menu } from 'electron';
+import { app, dialog, Menu } from 'electron';
 
 import playerWindow from './player_window';
 import configWindow from './config_window';
@@ -36,10 +36,20 @@ const menu = Menu.buildFromTemplate([
       },
       {
         label: '重启应用',
-        click: () => {
-          app.relaunch();
-          return app.quit();
-        },
+        click: () =>
+          dialog
+            .showMessageBox({
+              type: 'question',
+              message: '确定重启应用吗?',
+              buttons: ['确认', '取消'],
+            })
+            .then(({ response }) => {
+              if (response === 1) {
+                return;
+              }
+              app.relaunch();
+              return app.quit();
+            }),
       },
       {
         label: '退出',
