@@ -1,7 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const configSchema = require('./config_schema');
+const config = require('../config.json');
 const pkg = require('../package.json');
+
+const { error } = configSchema.validate(config, { allowUnknown: true });
+if (error) {
+  throw error;
+}
 
 module.exports = {
   entry: './src/index.ts',
@@ -23,6 +30,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         VERSION: JSON.stringify(pkg.version),
+        UI_ORIGIN: JSON.stringify(config.ui_origin),
       },
     }),
   ],

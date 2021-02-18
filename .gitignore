@@ -2,6 +2,9 @@
 node_modules/
 package-lock.json
 
+# config
+config.json
+
 # macOS
 .DS_Store
 
