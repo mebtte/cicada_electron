@@ -24,19 +24,14 @@ if (os.platform() === 'darwin') {
         click: () => playerWindow.show(),
       },
       {
-        label: '配置',
-        click: () => configWindow.open(),
-      },
-      {
-        label: '重置应用',
-        click: reset,
-      },
-      {
         label: '关于',
         submenu: [
           {
             label: `版本 ${VERSION}`,
             enabled: false,
+          },
+          {
+            type: 'separator',
           },
           {
             label: '检查更新',
@@ -51,6 +46,20 @@ if (os.platform() === 'darwin') {
             click: () => playerWindow.webContents.openDevTools(),
           },
         ],
+      },
+      {
+        type: 'separator',
+      },
+      {
+        label: '配置',
+        click: () => configWindow.open(),
+      },
+      {
+        label: '重置应用',
+        click: reset,
+      },
+      {
+        type: 'separator',
       },
       {
         label: '重启应用',
