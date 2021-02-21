@@ -16,8 +16,9 @@ export default new Store<{
   [Key.PLAYER_WINDOW_HEIGHT]: number;
   [Key.PLAYER_DEVTOOLS_OPEN]: boolean;
 }>({
-  name:
-    process.env.NODE_ENV === 'development' ? 'development_setting' : 'setting',
+  name: `${
+    process.env.NODE_ENV === 'development' ? 'development_setting' : 'setting'
+  }_v1`,
   defaults: {
     [Key.UI_ORIGIN]: config.ui_origin,
     [Key.PLAYER_WINDOW_WIDTH]: 960,
