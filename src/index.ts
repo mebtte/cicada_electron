@@ -32,7 +32,7 @@ try {
   app.on('window-all-closed', () => app.quit());
 
   // 检查更新
-  if (process.env.NODE_ENV === 'producation') {
+  if (process.env.NODE_ENV !== 'development') {
     const { default: updater } = await import('./platform/updater');
     updater.checkUpdate();
   }

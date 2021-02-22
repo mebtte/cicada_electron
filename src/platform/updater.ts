@@ -47,7 +47,10 @@ async function checkUpdate(silence = false) {
     }
     const $ = cheerio.load(html);
     const latestVersion = $('.commit h4 a').first().text().trim();
-    if (versionMax(VERSION, latestVersion) === latestVersion) {
+    if (
+      VERSION !== latestVersion &&
+      versionMax(VERSION, latestVersion) === latestVersion
+    ) {
       const { response } = await dialog.showMessageBox({
         type: 'info',
         buttons: ['前往下载', '取消'],
