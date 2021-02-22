@@ -34,7 +34,7 @@ try {
   // 检查更新
   if (process.env.NODE_ENV !== 'development') {
     const { default: updater } = await import('./platform/updater');
-    updater.checkUpdate();
+    updater.checkUpdate(true);
   }
 } catch (error) {
   const { response } = await dialog.showMessageBox({
