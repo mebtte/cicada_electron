@@ -1,7 +1,7 @@
 {
   "name": "cicada_desktop",
   "description": "知了桌面客户端",
-  "version": "5.7.11",
+  "version": "5.7.12",
   "author": {
     "name": "mebtte",
     "email": "hi@mebtte.com",
@@ -27,7 +27,7 @@
     "@typescript-eslint/parser": "^2.26.0",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
-    "electron": "^11.2.3",
+    "electron": "^11.4.3",
     "electron-builder": "^22.10.5",
     "eslint": "^7.0.0",
     "joi": "^17.4.0",

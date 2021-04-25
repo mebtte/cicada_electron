@@ -30,7 +30,7 @@ function open() {
       devTools: true,
     },
   });
-  configWindow.loadURL(`${store.get(Key.UI_ORIGIN)}/desktop_configure`);
+  configWindow.loadURL(`${store.get(Key.UI_ORIGIN)}/#/desktop_configure`);
   if (process.env.NODE_ENV === 'development') {
     configWindow.webContents.openDevTools();
   }
