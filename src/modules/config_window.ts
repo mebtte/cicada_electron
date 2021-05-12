@@ -30,7 +30,7 @@ function open() {
       devTools: true,
     },
   });
-  configWindow.loadURL(`${store.get(Key.UI_ORIGIN)}/#/desktop_configure`);
+  configWindow.loadURL(`${store.get(Key.PWA_ORIGIN)}/#/desktop_configure`);
   if (process.env.NODE_ENV === 'development') {
     configWindow.webContents.openDevTools();
   }
@@ -41,7 +41,7 @@ function open() {
   configWindow.webContents.on('new-window', (event) => event.preventDefault());
   configWindow.webContents.on('will-navigate', (event, url) => {
     const { origin } = new URL(url);
-    if (origin !== store.get(Key.UI_ORIGIN)) {
+    if (origin !== store.get(Key.PWA_ORIGIN)) {
       event.preventDefault();
     }
   });

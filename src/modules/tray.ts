@@ -39,7 +39,7 @@ if (os.platform() === 'darwin') {
           },
           {
             label: '访问网站',
-            click: () => shell.openExternal(config.ui_origin),
+            click: () => shell.openExternal(config.pwa_origin),
           },
           {
             label: '开发者工具',

@@ -30,7 +30,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         VERSION: JSON.stringify(pkg.version),
-        UI_ORIGIN: JSON.stringify(config.ui_origin),
+        PWA_ORIGIN: JSON.stringify(config.pwa_origin),
       },
     }),
   ],
