@@ -74,7 +74,7 @@ async function checkUpdate(silence = false) {
         message: `检查更新失败: ${error.message}`,
       });
       if (response === 0) {
-        shell.openExternal(`${config.github_repository}/releases`);
+        shell.openExternal(`${config.github_repository}/issues`);
       }
     }
   }
