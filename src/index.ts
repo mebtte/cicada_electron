@@ -49,7 +49,7 @@ try {
     const { default: reset } = await import('./utils/reset');
     await reset();
   } else if (response === 2) {
-    await shell.openExternal(`${config.repository}/releases`);
+    await shell.openExternal(`${config.github_repository}/releases`);
     app.quit();
   }
   app.quit();
