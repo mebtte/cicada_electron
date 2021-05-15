@@ -39,7 +39,7 @@ const versionMax = (a: string, b: string) => {
 async function checkUpdate(silence = false) {
   try {
     const { status, statusText, data: html } = await axios.request({
-      url: `${config.repository}/tags`,
+      url: `${config.github_repository}/tags`,
       timeout: 1000 * 60,
     });
     if (status !== 200) {
@@ -57,7 +57,7 @@ async function checkUpdate(silence = false) {
         message: `发现新的版本: ${latestVersion}`,
       });
       if (response === 0) {
-        shell.openExternal(`${config.repository}/releases`);
+        shell.openExternal(`${config.github_repository}/releases`);
       }
     } else if (!silence) {
       dialog.showMessageBox({
@@ -74,7 +74,7 @@ async function checkUpdate(silence = false) {
         message: `检查更新失败: ${error.message}`,
       });
       if (response === 0) {
-        shell.openExternal(`${config.repository}/releases`);
+        shell.openExternal(`${config.github_repository}/releases`);
       }
     }
   }

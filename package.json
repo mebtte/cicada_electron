@@ -1,7 +1,6 @@
 {
-  "name": "cicada_desktop",
-  "description": "知了桌面客户端",
-  "version": "5.7.13",
+  "name": "cicada_electron",
+  "version": "5.7.14",
   "author": {
     "name": "mebtte",
     "email": "hi@mebtte.com",
