@@ -9,8 +9,6 @@ import configWindow from './config_window';
 import updater from '../platform/updater';
 import reset from '../utils/reset';
 
-const { VERSION } = process.env;
-
 let tray: Tray;
 
 if (os.platform() === 'darwin') {
@@ -27,7 +25,7 @@ if (os.platform() === 'darwin') {
         label: '关于',
         submenu: [
           {
-            label: `版本 ${VERSION}`,
+            label: `版本 ${config.version}`,
             enabled: false,
           },
           {

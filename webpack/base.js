@@ -31,7 +31,6 @@ module.exports = {
       'process.env': {
         VERSION: JSON.stringify(pkg.version),
         PWA_ORIGIN: JSON.stringify(config.pwa_origin),
-        GITHUB_REPOSITORY: JSON.stringify(config.github_repository),
       },
     }),
   ],

@@ -2,9 +2,9 @@ import { dialog, shell } from 'electron';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
+import { CICADA_ELECTRON_GITHUB_REPOSITORY } from '../constants';
 import config from '../config';
 
-const { VERSION } = process.env;
 const versionMax = (a: string, b: string) => {
   if (a === b) {
     return a;
@@ -39,7 +39,7 @@ const versionMax = (a: string, b: string) => {
 async function checkUpdate(silence = false) {
   try {
     const { status, statusText, data: html } = await axios.request({
-      url: `${config.github_repository}/tags`,
+      url: `${CICADA_ELECTRON_GITHUB_REPOSITORY}/tags`,
       timeout: 1000 * 60,
     });
     if (status !== 200) {
@@ -48,8 +48,8 @@ async function checkUpdate(silence = false) {
     const $ = cheerio.load(html);
     const latestVersion = $('.commit h4 a').first().text().trim();
     if (
-      VERSION !== latestVersion &&
-      versionMax(VERSION, latestVersion) === latestVersion
+      config.version !== latestVersion &&
+      versionMax(config.version, latestVersion) === latestVersion
     ) {
       const { response } = await dialog.showMessageBox({
         type: 'info',
@@ -57,12 +57,12 @@ async function checkUpdate(silence = false) {
         message: `发现新的版本: ${latestVersion}`,
       });
       if (response === 0) {
-        shell.openExternal(`${config.github_repository}/releases`);
+        shell.openExternal(`${CICADA_ELECTRON_GITHUB_REPOSITORY}/releases`);
       }
     } else if (!silence) {
       dialog.showMessageBox({
         type: 'info',
-        message: `当前已是最新版本: ${VERSION}`,
+        message: '当前已是最新版本',
       });
     }
   } catch (error) {
@@ -74,7 +74,7 @@ async function checkUpdate(silence = false) {
         message: `检查更新失败: ${error.message}`,
       });
       if (response === 0) {
-        shell.openExternal(`${config.github_repository}/issues`);
+        shell.openExternal(`${CICADA_ELECTRON_GITHUB_REPOSITORY}/issues`);
       }
     }
   }

@@ -1,8 +1,7 @@
 import * as os from 'os';
-
 import { app, dialog, shell, Menu } from 'electron';
 
-import config from './config';
+import { CICADA_ELECTRON_GITHUB_REPOSITORY } from './constants';
 
 // 单例模式
 if (!app.requestSingleInstanceLock()) {
@@ -49,7 +48,7 @@ try {
     const { default: reset } = await import('./utils/reset');
     await reset();
   } else if (response === 2) {
-    await shell.openExternal(`${config.github_repository}/releases`);
+    await shell.openExternal(`${CICADA_ELECTRON_GITHUB_REPOSITORY}/releases`);
     app.quit();
   }
   app.quit();
