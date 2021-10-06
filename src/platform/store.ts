@@ -18,11 +18,11 @@ export default new Store<{
 }>({
   name: `${
     process.env.NODE_ENV === 'development' ? 'development_setting' : 'setting'
-  }_v1`,
+  }_v2`,
   defaults: {
     [Key.PWA_ORIGIN]: config.pwa_origin,
     [Key.PLAYER_WINDOW_WIDTH]: 960,
-    [Key.PLAYER_WINDOW_HEIGHT]: 650,
+    [Key.PLAYER_WINDOW_HEIGHT]: 720,
     [Key.PLAYER_DEVTOOLS_OPEN]: false,
   },
 });

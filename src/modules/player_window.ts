@@ -6,8 +6,8 @@ import store, { Key } from '../platform/store';
 const playerWindow = new BrowserWindow({
   width: store.get(Key.PLAYER_WINDOW_WIDTH),
   height: store.get(Key.PLAYER_WINDOW_HEIGHT),
-  minWidth: 900,
-  minHeight: 650,
+  minWidth: 375,
+  minHeight: 720,
   resizable: true,
   frame: false,
   titleBarStyle: 'hidden',
