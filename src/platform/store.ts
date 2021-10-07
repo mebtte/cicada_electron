@@ -17,12 +17,12 @@ export default new Store<{
   [Key.PLAYER_DEVTOOLS_OPEN]: boolean;
 }>({
   name: `${
-    process.env.NODE_ENV === 'development' ? 'development_setting' : 'setting'
-  }_v2`,
+    process.env.NODE_ENV === 'development' ? 'setting_development' : 'setting'
+  }_v3`,
   defaults: {
     [Key.PWA_ORIGIN]: config.pwa_origin,
-    [Key.PLAYER_WINDOW_WIDTH]: 960,
-    [Key.PLAYER_WINDOW_HEIGHT]: 720,
+    [Key.PLAYER_WINDOW_WIDTH]: 880,
+    [Key.PLAYER_WINDOW_HEIGHT]: 640,
     [Key.PLAYER_DEVTOOLS_OPEN]: false,
   },
 });

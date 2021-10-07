@@ -7,7 +7,7 @@ const playerWindow = new BrowserWindow({
   width: store.get(Key.PLAYER_WINDOW_WIDTH),
   height: store.get(Key.PLAYER_WINDOW_HEIGHT),
   minWidth: 375,
-  minHeight: 720,
+  minHeight: 640,
   resizable: true,
   frame: false,
   titleBarStyle: 'hidden',
