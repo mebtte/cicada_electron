@@ -1,3 +1,5 @@
+当前项目已合并到 [https://github.com/mebtte/cicada](https://github.com/mebtte/cicada)
+
 # [知了](https://cicada.mebtte.com)
 
 知了 Electron 客户端, 支持 macOS/Windows.
